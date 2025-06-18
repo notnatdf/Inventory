@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 app.use(cors({
-    origin: 'https://inventory-rho-eight.vercel.app/',
+    origin: 'https://inventory-rho-eight.vercel.app',
     methods: ['GET', "POST", "PUT", "DELETE"],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
