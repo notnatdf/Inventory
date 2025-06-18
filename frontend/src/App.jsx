@@ -24,9 +24,6 @@ function App() {
     setRefreshList(prev => prev + 1);
   };
 
-  console.log("VITE_API_URL:", import.meta.env.VITE_API_URL);
-  console.log("VITE_TEST_URL:", import.meta.env.VITE_TEST_URL);
-
   return (
       <div className="App">
         <Navbar />
