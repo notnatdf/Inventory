@@ -3,13 +3,21 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import productRoutes from './routes/ProductRoutes.js';
+import connectDB from './config/db.js';
+
 dotenv.config();
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://inventory-rho-eight.vercel.app/',
+    methods: ['GET', "POST", "PUT", "DELETE"],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 mongoose.connect(MONGODB_URI)
