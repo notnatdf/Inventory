@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { productAPI } from '../api';
+import { productAPI } from '../services/api';
 import { Table, Form, Button, Container, Alert, Row, Col } from 'react-bootstrap';
 
 const LowStockAlert = () => {

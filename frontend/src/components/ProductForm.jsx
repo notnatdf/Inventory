@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
-import { productAPI } from '../api';
+import { productAPI } from '../services/api';
 
 const ProductForm = ({ onProductAdded }) => {
     const [formData, setFormData] = useState({

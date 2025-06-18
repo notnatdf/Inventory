@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { productAPI } from '../api';
+import { productAPI } from '../services/api';
 import { Link } from 'react-router-dom';
 import { Button, Form, Col, Alert } from 'react-bootstrap';
 

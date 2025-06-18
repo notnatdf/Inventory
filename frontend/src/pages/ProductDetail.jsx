@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { productAPI } from '../api';
+import { productAPI } from '../services/api';
 import { Form, Button, Alert, Container, Row, Col, Card } from "react-bootstrap";
 
 const ProductDetail = () => {

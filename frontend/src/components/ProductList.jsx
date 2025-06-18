@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { productAPI } from '../api';
+import { productAPI } from '../services/api.js';
 import ProductListItem from './ProductListItem.jsx';
 import { Table, Form, Button, Container, Alert } from 'react-bootstrap';
 
