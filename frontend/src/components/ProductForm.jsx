@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import { Form, Button, Alert, Container, Row, Col } from "react-bootstrap";
+import { productAPI } from '../api';
 
 const ProductForm = ({ onProductAdded }) => {
     const [formData, setFormData] = useState({
@@ -24,7 +24,8 @@ const ProductForm = ({ onProductAdded }) => {
         setError('');
 
         try {
-            const response = await axios.post('http://localhost:5000/api/products', formData);
+            const response = await productAPI.createProduct(formData);
+            
             setMessge(`상품 '${response.data.name}'이(가) 성공적으로 추가되었습니다.`);
             setFormData({
                 name: '',

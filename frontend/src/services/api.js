@@ -25,7 +25,7 @@ export const productAPI = {
 
     searchProducts: (keyword) => api.get(`/products/search?keyword=${keyword}`),
 
-    getLowStockProducts: () => api.get('/products/low-stock'),
+    getLowStockProducts: (threshold) => api.get(`/products/low-stock?threshold=${threshold}`),
 };
 
 export default api;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import { productAPI } from '../api';
 import { Table, Form, Button, Container, Alert, Row, Col } from 'react-bootstrap';
 
 const LowStockAlert = () => {
@@ -16,10 +16,8 @@ const LowStockAlert = () => {
             setLoading(true);
             setError(null);
             try {
-                const url = `http://localhost:5000/api/products/low-stock?threshold=${threshold}`;
-                console.log("LowStockAlert API 요청 URL:", url);
+                const response = await productAPI.getLowStockProducts(threshold);
 
-                const response = await axios.get(url);
                 console.log("LowStockAlert API 응답 데이터:", response.data);
                 
                 setLowStockProducts(response.data);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import axios from 'axios';
+import { productAPI } from '../api';
 import ProductListItem from './ProductListItem.jsx';
 import { Table, Form, Button, Container, Alert } from 'react-bootstrap';
 
@@ -13,10 +13,10 @@ const ProductList = () => {
         setLoading(true);
         setError(null);
         try {
-            const url = searchKeyword
-                ? `http://localhost:5000/api/products?keyword=${searchKeyword}`
-                : 'http://localhost:5000/api/products';
-            const response = await axios.get(url);
+            const response = searchKeyword
+                ? await productAPI.searchProducts(searchKeyword)
+                : await productAPI.getAllProducts();
+
                 setProducts(response.data);
                 setLoading(false); 
         } catch (err) {

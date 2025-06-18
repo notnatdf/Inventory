@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import { productAPI } from '../api';
 import { Form, Button, Alert, Container, Row, Col, Card } from "react-bootstrap";
 
 const ProductDetail = () => {
@@ -16,7 +16,7 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/products/${id}`);
+                const response = await productAPI.getProductById(id);
                 setProduct(response.data);
                 setFormData(response.data);
                 setLoading(false);
@@ -37,7 +37,7 @@ const ProductDetail = () => {
         e.preventDefault();
         setUpdateError(null);
         try {
-            const response = await axios.put(`http://localhost:5000/api/products/${id}`, formData);
+            const response = await productAPI.updateProduct(id, formData);
             setProduct(response.data);
             setIsEditing(false);
         } catch (err) {
@@ -49,7 +49,7 @@ const ProductDetail = () => {
     const handleDelete = async () => {
         if (window.confirm(`${product.name}상품을 정말 삭제하시겠습니까?`)) {
             try {
-                await axios.delete(`http://localhost:5000/api/products/${id}`);
+                await productAPI.deleteProduct(id);
                 alert('상품이 성공적으로 삭제되었습니다!');
                 navigate('/')
             } catch (err) {

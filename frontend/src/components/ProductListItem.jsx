@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { productAPI } from '../api';
 import { Link } from 'react-router-dom';
 import { Button, Form, Col, Alert } from 'react-bootstrap';
 
@@ -15,7 +15,7 @@ const ProductListItem = ({ product, onProductUpdated, onProductDeleted }) => {
 
     const handleUpdate = async () => {
         try {
-            const response = await axios.put(`http://localhost:5000/api/products/${product._id}`, formData);
+            const response = await productAPI.updateProduct(product._id, formData);
             setIsEditing(false);
             if (onProductUpdated) {
                 onProductUpdated(response.data);
@@ -28,7 +28,7 @@ const ProductListItem = ({ product, onProductUpdated, onProductDeleted }) => {
     const handleDelete = async () => {
         if (window.confirm(`${product.name} 상품을 정말 삭제하시겠습니까?`)) {
             try {
-                await axios.delete(`http://localhost:5000/api/products/${product._id}`);
+                await productAPI.deleteProduct(product._id);
                 if (onProductDeleted) {
                     onProductDeleted(product._id);
                 }
